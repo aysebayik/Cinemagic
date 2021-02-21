@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RevenueRow: UITableViewCell , UICollectionViewDataSource, UICollectionViewDelegate{
+class RevenueRow: UITableViewCell , UICollectionViewDataSource{
     
     @IBOutlet weak var txtCategory3: UILabel!
 
@@ -20,10 +20,14 @@ class RevenueRow: UITableViewCell , UICollectionViewDataSource, UICollectionView
         txtCategory3.text = labelName
         self.sourceData = sourceData
         MovieCollectionView3.dataSource = self
-        MovieCollectionView3.delegate = self
+//        MovieCollectionView3.delegate = self
         MovieCollectionView3.reloadData()
     }
-
+    
+    func makeSegue()-> [Result]{
+        return sourceData
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         sourceData.count
     }
@@ -48,18 +52,16 @@ class RevenueRow: UITableViewCell , UICollectionViewDataSource, UICollectionView
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected: \(sourceData[indexPath.row].originalTitle)")
-        let item = sourceData[indexPath.row]
-        performSegue(withIdentifier: "detail", sender: item)
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 4
     }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        print("Selected: \(sourceData[indexPath.row].originalTitle)")
+//        let item = sourceData[indexPath.row]
+////        performSegue(withIdentifier:"detail", sender: item)
+//        
+//    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if ( segue.identifier == "detail" ) {
-            let vc = segue.destination as! MovieDetail
-            vc.item = sender as? Result
-        }
-    }
     
 
     override func awakeFromNib() {

@@ -19,6 +19,7 @@ class MovieListController: UITableViewController {
     var arrReleaseDateMovies: [Result] = []
     var arrMovies: [[Result]] = [[]]
     var cellScale : CGFloat = 0.6
+    var section : Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,12 +83,12 @@ class MovieListController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,41 +98,41 @@ class MovieListController: UITableViewController {
         arrMovies = [arrPopularMovies,arrTopRatedMovies,arrRevenueMovies,arrReleaseDateMovies]
         
         
-        if indexPath.row == 0 {
+        if indexPath.section == 0 {
             if let  popCell = tableView.dequeueReusableCell(withIdentifier: "popularCell", for: indexPath) as? PopularRow {
                 
-                popCell.configure(with: categories[indexPath.row],sourceData: arrPopularMovies)
-//                popCell.MovieCollectionView.delegate = self
+                popCell.configure(with: categories[indexPath.section],sourceData: arrPopularMovies)
+                popCell.MovieCollectionView.delegate = self
                 popCell.MovieCollectionView.reloadData()
                 
                 cell = popCell
             }
-        }else if indexPath.row == 1 {
+        }else if indexPath.section == 1 {
             if let  topCell = tableView.dequeueReusableCell(withIdentifier: "topRatedCell", for: indexPath) as? TopRatedRow {
                 
-                topCell.configure(with: categories[indexPath.row],sourceData: arrTopRatedMovies)
+                topCell.configure(with: categories[indexPath.section],sourceData: arrTopRatedMovies)
                 
-//                topCell.MovieCollectionView2.delegate = self
+                topCell.MovieCollectionView2.delegate = self
                 topCell.MovieCollectionView2.reloadData()
                 
                 cell = topCell
             }
-        }else if indexPath.row == 2 {
+        }else if indexPath.section == 2 {
             if let  revCell = tableView.dequeueReusableCell(withIdentifier: "revenueCell", for: indexPath) as? RevenueRow {
                 
-                revCell.configure(with: categories[indexPath.row],sourceData: arrRevenueMovies)
+                revCell.configure(with: categories[indexPath.section],sourceData: arrRevenueMovies)
                 
-//                revCell.MovieCollectionView3.delegate = self
+                revCell.MovieCollectionView3.delegate = self
                 revCell.MovieCollectionView3.reloadData()
                 
                 cell = revCell
             }
-        }else if indexPath.row == 3 {
+        }else if indexPath.section == 3 {
             if let  releaseCell = tableView.dequeueReusableCell(withIdentifier: "releaseDateCell", for: indexPath) as? ReleaseDateRow {
                 
-                releaseCell.configure(with: categories[indexPath.row],sourceData: arrReleaseDateMovies)
+                releaseCell.configure(with: categories[indexPath.section],sourceData: arrReleaseDateMovies)
                 
-//                releaseCell.MovieCollectionView4.delegate = self
+                releaseCell.MovieCollectionView4.delegate = self
                 releaseCell.MovieCollectionView4.reloadData()
                 
                 cell = releaseCell
@@ -142,6 +143,27 @@ class MovieListController: UITableViewController {
         return cell
         
         
+    }
+    
+    
+
+   
+    
+//    public func callSegue (item : Result!) {
+//        print("callSegue called")
+//        performSegue(withIdentifier: "detail", sender: item)
+//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.section = indexPath.section
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if ( segue.identifier == "detail" ) {
+            
+            let vc = segue.destination as! MovieDetail
+            vc.item = sender as? Result
+        }
     }
     
 //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -194,38 +216,21 @@ class MovieListController: UITableViewController {
 extension MovieListController : UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-////        let flowLayout: UICollectionViewFlowLayout = {
-////            let layout = UICollectionViewFlowLayout()
-////            layout.minimumInteritemSpacing = 5
-////            layout.minimumLineSpacing = 5
-////            layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-////            return layout
-////        }()
-////
-////        let width = collectionView.bounds.width
-////        let numberOfItemsPerRow: CGFloat = 3
-////        let spacing: CGFloat = flowLayout.minimumInteritemSpacing
-////        let availableWidth = width - spacing * (numberOfItemsPerRow + 1)
-////        let itemDimension = floor(availableWidth / numberOfItemsPerRow)
-////        return CGSize(width: itemDimension, height: itemDimension)
-////
-////        ****
-//
-//
         let itemsPerRow:CGFloat = 3
-        let hardCodedPadding:CGFloat = 2
+        let hardCodedPadding:CGFloat = 5
         let itemWidth = (collectionView.bounds.width / itemsPerRow) - hardCodedPadding
         let itemHeight = collectionView.bounds.height - (2 * hardCodedPadding)
         return CGSize(width: itemWidth, height: itemHeight)
-//
-////        ***
-//
     }
-    
+  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected: \(arrMovies[indexPath.section][indexPath.row].originalTitle)")
+        print("Selected: \(arrMovies[self.section][indexPath.row].originalTitle)")
+        let item = arrMovies[self.section][indexPath.row]
+        performSegue(withIdentifier: "detail", sender: item)
     }
+//
+
+//
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
 //        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
 //    }
@@ -239,4 +244,3 @@ extension MovieListController : UICollectionViewDelegateFlowLayout {
 //    }
 
 }
-

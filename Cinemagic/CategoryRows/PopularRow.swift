@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PopularRow: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate{
+class PopularRow: UITableViewCell, UICollectionViewDataSource {
     
     @IBOutlet weak var txtCategory: UILabel!
 
@@ -16,12 +16,17 @@ class PopularRow: UITableViewCell, UICollectionViewDataSource, UICollectionViewD
     var sourceData : [Result] = []
     
     
+    
     func configure (with labelName : String, sourceData : [Result] ){
         txtCategory.text = labelName
         self.sourceData = sourceData
         MovieCollectionView.dataSource = self
-        MovieCollectionView.delegate = self
+//        MovieCollectionView.delegate = self
         MovieCollectionView.reloadData()
+    }
+    
+    func makeSegue()-> [Result]{
+        return sourceData
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -48,18 +53,15 @@ class PopularRow: UITableViewCell, UICollectionViewDataSource, UICollectionViewD
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected: \(sourceData[indexPath.row].originalTitle)")
-        let item = sourceData[indexPath.row]
-        performSegue(withIdentifier: "detail", sender: item)
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 4 
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if ( segue.identifier == "detail" ) {
-            let vc = segue.destination as! MovieDetail
-            vc.item = sender as? Result
-        }
-    }
+
+    
+    
+
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,0 +1,6 @@
+framework module Pods_Cinemagic {
+  umbrella header "Pods-Cinemagic-umbrella.h"
+
+  export *
+  module * { export * }
+}

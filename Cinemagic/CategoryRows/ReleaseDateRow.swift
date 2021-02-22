@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReleaseDateRow: UITableViewCell, UICollectionViewDataSource {
+class ReleaseDateRow: UITableViewCell, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var txtCategory4: UILabel!
 
@@ -15,17 +15,11 @@ class ReleaseDateRow: UITableViewCell, UICollectionViewDataSource {
     
     var sourceData : [Result] = []
     
-    
     func configure (with labelName : String, sourceData : [Result] ){
         txtCategory4.text = labelName
         self.sourceData = sourceData
         MovieCollectionView4.dataSource = self
-//        MovieCollectionView4.delegate = self
         MovieCollectionView4.reloadData()
-    }
-    
-    func makeSegue()-> [Result]{
-        return sourceData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -35,33 +29,17 @@ class ReleaseDateRow: UITableViewCell, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomMovieCollectionCell
         
-        
-        let firstPath = "https://image.tmdb.org/t/p/w500"
-        if self.sourceData.isEmpty == false{
-            if self.sourceData[indexPath.row].posterPath?.isEmpty == false{
-                let imagePath = self.sourceData[indexPath.row].posterPath
-                let fullPath = firstPath + imagePath!
-                let url = URL(string: fullPath)
-                let data = try! Data(contentsOf: url!)
-                cell.ImageMovie.image = UIImage(data: data)
-            }
-            else {
-                cell.ImageMovie.image = UIImage(named: "noMovie")
-            }
-        }
+        MovieListController().loadImage(sourceData: sourceData, indexPath: indexPath, cell: cell)
         return cell
+        
+//        let imgArr = MovieListController().loadImage2(sourceData: sourceData)
+//        cell.ImageMovie.image = imgArr[indexPath.row].image
+//        return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("Selected: \(sourceData[indexPath.row].originalTitle)")
-//        let item = sourceData[indexPath.row]
-////        performSegue(withIdentifier: "detail", sender: item)
-//    }
-//
-
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -71,5 +49,4 @@ class ReleaseDateRow: UITableViewCell, UICollectionViewDataSource {
         super.setSelected(selected, animated: animated)
 
     }
-
 }

@@ -6,29 +6,24 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class PopularRow: UITableViewCell, UICollectionViewDataSource {
     
     @IBOutlet weak var txtCategory: UILabel!
-
+    
     @IBOutlet weak var MovieCollectionView: UICollectionView!
     
     var sourceData : [Result] = []
-    
-    
     
     func configure (with labelName : String, sourceData : [Result] ){
         txtCategory.text = labelName
         self.sourceData = sourceData
         MovieCollectionView.dataSource = self
-//        MovieCollectionView.delegate = self
         MovieCollectionView.reloadData()
     }
-    
-    func makeSegue()-> [Result]{
-        return sourceData
-    }
-
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         sourceData.count
     }
@@ -36,32 +31,20 @@ class PopularRow: UITableViewCell, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomMovieCollectionCell
         
+        MovieListController().loadImage(sourceData: sourceData, indexPath: indexPath, cell: cell)
         
-        let firstPath = "https://image.tmdb.org/t/p/w500"
-        if self.sourceData.isEmpty == false{
-            if self.sourceData[indexPath.row].posterPath?.isEmpty == false{
-                let imagePath = self.sourceData[indexPath.row].posterPath
-                let fullPath = firstPath + imagePath!
-                let url = URL(string: fullPath)
-                let data = try! Data(contentsOf: url!)
-                cell.ImageMovie.image = UIImage(data: data)
-            }
-            else {
-                cell.ImageMovie.image = UIImage(named: "noMovie")
-            }
-        }
         return cell
+        
+//        let imgArr = MovieListController().loadImage2(sourceData: sourceData)
+//        cell.ImageMovie.image = imgArr[indexPath.row].image
+//        return cell
+        
+        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4 
     }
-    
-
-    
-    
-
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -70,7 +53,4 @@ class PopularRow: UITableViewCell, UICollectionViewDataSource {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
- 
-
 }

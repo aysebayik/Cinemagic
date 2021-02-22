@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieDetail: UIViewController {
     
@@ -35,29 +36,17 @@ class MovieDetail: UIViewController {
         if item.overview.isEmpty != true {
             movieOverview.text = item.overview
         }
-        if item.posterPath?.isEmpty != true {
+        if item.posterPath != nil {
             let imagePath = "https://image.tmdb.org/t/p/w500\(item.posterPath!)"
-            movieImage.image = UIImage(data: try! Data(contentsOf: URL(string: imagePath)!))
             
+            let resource = ImageResource(downloadURL: URL(string: imagePath)!)
+            
+            movieImage.kf.indicatorType = .activity
+            movieImage.kf.setImage(with: resource)
+        
+            }
+        else {
+            movieImage.image = UIImage(named: "noMovie")
         }
-        
-        
-        
-        
-        
-
-      
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

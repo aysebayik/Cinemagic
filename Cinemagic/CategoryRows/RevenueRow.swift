@@ -20,7 +20,6 @@ class RevenueRow: UITableViewCell , UICollectionViewDataSource{
         txtCategory3.text = labelName
         self.sourceData = sourceData
         MovieCollectionView3.dataSource = self
-//        MovieCollectionView3.delegate = self
         MovieCollectionView3.reloadData()
     }
     
@@ -35,21 +34,12 @@ class RevenueRow: UITableViewCell , UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomMovieCollectionCell
         
-        
-        let firstPath = "https://image.tmdb.org/t/p/w500"
-        if self.sourceData.isEmpty == false{
-            if self.sourceData[indexPath.row].posterPath?.isEmpty == false{
-                let imagePath = self.sourceData[indexPath.row].posterPath
-                let fullPath = firstPath + imagePath!
-                let url = URL(string: fullPath)
-                let data = try! Data(contentsOf: url!)
-                cell.ImageMovie.image = UIImage(data: data)
-            }
-            else {
-                cell.ImageMovie.image = UIImage(named: "noMovie")
-            }
-        }
+        MovieListController().loadImage(sourceData: sourceData, indexPath: indexPath, cell: cell)
         return cell
+        
+//        let imgArr = MovieListController().loadImage2(sourceData: sourceData)
+//        cell.ImageMovie.image = imgArr[indexPath.row].image
+//        return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

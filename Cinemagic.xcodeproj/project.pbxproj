@@ -16,7 +16,6 @@
 		1519D7A225DE6A9D00692D50 /* MovieListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D7A125DE6A9D00692D50 /* MovieListController.swift */; };
 		1519D7A825DE6E7D00692D50 /* CustomMovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D7A725DE6E7D00692D50 /* CustomMovieCollectionCell.swift */; };
 		1519D7AC25DE711500692D50 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D7AB25DE711500692D50 /* Movie.swift */; };
-		1519D7BC25DE895700692D50 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519D7BB25DE895700692D50 /* Genre.swift */; };
 		158C013125E55C5A004BB4F5 /* Gamoda.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 158C013025E55C5A004BB4F5 /* Gamoda.ttf */; };
 		158C013425E55D2F004BB4F5 /* Pineapple Grass.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 158C013325E55D2F004BB4F5 /* Pineapple Grass.ttf */; };
 		158C013725E55E32004BB4F5 /* Stanberry.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 158C013625E55E32004BB4F5 /* Stanberry.ttf */; };
@@ -40,7 +39,6 @@
 		1519D7A125DE6A9D00692D50 /* MovieListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListController.swift; sourceTree = "<group>"; };
 		1519D7A725DE6E7D00692D50 /* CustomMovieCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMovieCollectionCell.swift; sourceTree = "<group>"; };
 		1519D7AB25DE711500692D50 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		1519D7BB25DE895700692D50 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		158C013025E55C5A004BB4F5 /* Gamoda.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Gamoda.ttf; path = ../../../../../Downloads/gamoda/Gamoda.ttf; sourceTree = "<group>"; };
 		158C013325E55D2F004BB4F5 /* Pineapple Grass.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Pineapple Grass.ttf"; path = "../../../../../Downloads/pineapple_grass/Pineapple Grass.ttf"; sourceTree = "<group>"; };
 		158C013625E55E32004BB4F5 /* Stanberry.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Stanberry.ttf; path = ../../../../../Downloads/Stanberry.ttf; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				1519D7AB25DE711500692D50 /* Movie.swift */,
-				1519D7BB25DE895700692D50 /* Genre.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -285,7 +282,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				15BE3F7525E2734A00A42A18 /* ReleaseDateRow.swift in Sources */,
-				1519D7BC25DE895700692D50 /* Genre.swift in Sources */,
 				1519D7AC25DE711500692D50 /* Movie.swift in Sources */,
 				1519D7A225DE6A9D00692D50 /* MovieListController.swift in Sources */,
 				1519D7A825DE6E7D00692D50 /* CustomMovieCollectionCell.swift in Sources */,

@@ -43,15 +43,8 @@ class RevenueRow: UITableViewCell , UICollectionViewDataSource{
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return 20
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("Selected: \(sourceData[indexPath.row].originalTitle)")
-//        let item = sourceData[indexPath.row]
-////        performSegue(withIdentifier:"detail", sender: item)
-//        
-//    }
-    
     
 
     override func awakeFromNib() {

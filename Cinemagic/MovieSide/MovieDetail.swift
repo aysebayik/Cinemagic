@@ -70,16 +70,18 @@ class MovieDetail: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
+//        if device has been rotated to landscape orientation current page will look like
         if UIDevice.current.orientation.isLandscape{
             print("landscape")
 
             movieImage.frame = CGRect(x: 482, y: 44, width: 392, height: 349)
             movieTitle.frame = CGRect(x: 60, y: 63, width: 389, height: 40)
             movieRate.frame = CGRect(x: 60, y: 111, width: 114, height: 29)
-            movieDate.frame = CGRect(x: 335, y: 111, width: 114, height: 29)
+            movieDate.frame = CGRect(x: 240, y: 111, width: 209, height: 29)
             movieOverview.frame = CGRect(x: 60, y: 148, width: 389, height: 245)
             
         }
+//        if device has been rotated to portrair orientation current page will look like 
         if UIDevice.current.orientation.isPortrait{
             print("portrait")
             

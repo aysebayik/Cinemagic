@@ -1,8 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-Cinemagic/Pods-Cinemagic-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
-${BUILT_PRODUCTS_DIR}/NextLevel/NextLevel.framework
-${BUILT_PRODUCTS_DIR}/PMSuperButton/PMSuperButton.framework
-${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework
-${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework
 ${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework

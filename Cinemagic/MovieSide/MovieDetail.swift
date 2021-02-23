@@ -18,8 +18,10 @@ class MovieDetail: UIViewController {
     @IBOutlet var movieDate: UILabel!
     @IBOutlet var movieOverview: UITextView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if item.originalTitle.isEmpty != true {
             movieTitle.text = item.originalTitle
             if item.title.isEmpty != true && item.title != item.originalTitle{
@@ -27,10 +29,23 @@ class MovieDetail: UIViewController {
             }
         }
         if item.voteAverage != nil {
-            movieRate.text = "\(item.voteAverage!)"
+            let attachment = NSTextAttachment()
+            attachment.image = UIImage(named: "star")
+            let finalString = NSMutableAttributedString()
+            let attachmentString = NSAttributedString(attachment: attachment)
+            let myString = NSMutableAttributedString(string: "\(item.voteAverage!) ")
+            finalString.append(attachmentString)
+            finalString.append(myString)
+            movieRate.attributedText = finalString
         }
         if item.releaseDate.isEmpty != true {
-            movieDate.text = item.releaseDate
+            let attachment = NSTextAttachment()
+            attachment.image = UIImage(named: "calendar")
+            let attachmentString = NSAttributedString(attachment: attachment)
+            let myString = NSMutableAttributedString(string: item.releaseDate )
+            myString.append(attachmentString)
+            movieDate.attributedText = myString
+            
         }
         if item?.overview == nil ||  item?.overview == ""{
             movieOverview.text = "There is no overview."
@@ -50,10 +65,7 @@ class MovieDetail: UIViewController {
             movieImage.image = UIImage(named: "noMovie")
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
+
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)

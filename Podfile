@@ -7,10 +7,6 @@ target 'Cinemagic' do
 
   # Pods for Cinemagic
   pod 'Alamofire'
-  pod "NextLevel"
-  pod 'SCLAlertView', '~> 0.8'
   pod 'lottie-ios'
-  pod 'TextFieldEffects'
-  pod 'PMSuperButton'
   pod 'Kingfisher'
 end

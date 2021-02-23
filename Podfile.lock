@@ -2,39 +2,23 @@ PODS:
   - Alamofire (5.4.1)
   - Kingfisher (6.1.1)
   - lottie-ios (3.2.0)
-  - NextLevel (0.16.4)
-  - PMSuperButton (3.0.2)
-  - SCLAlertView (0.8)
-  - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - Alamofire
   - Kingfisher
   - lottie-ios
-  - NextLevel
-  - PMSuperButton
-  - SCLAlertView (~> 0.8)
-  - TextFieldEffects
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Kingfisher
     - lottie-ios
-    - NextLevel
-    - PMSuperButton
-    - SCLAlertView
-    - TextFieldEffects
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   Kingfisher: 676d63307fbef6ed5d5ed400bff36983480d7500
   lottie-ios: b6b911246246a90a1d25e7388afe6d9ef003d293
-  NextLevel: f84ecba5c546a87e245809e0523ef3a24897323b
-  PMSuperButton: 72105fef415890c8792a9e5a784f75c461066f8b
-  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
-  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 9a4248f104116a352db8fa9acbfe032b631016c9
+PODFILE CHECKSUM: 79997aa62fa159f4227622f21ac627e08bd7f16b
 
 COCOAPODS: 1.10.1

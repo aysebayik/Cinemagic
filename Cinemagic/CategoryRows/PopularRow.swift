@@ -29,6 +29,8 @@ class PopularRow: UITableViewCell, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomMovieCollectionCell
         
         MovieListController().loadImage(sourceData: sourceData, indexPath: indexPath, cell: cell)
@@ -53,4 +55,6 @@ class PopularRow: UITableViewCell, UICollectionViewDataSource {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    
 }

@@ -77,16 +77,14 @@
 		1519D78A25DE649300692D50 /* Cinemagic */ = {
 			isa = PBXGroup;
 			children = (
+				153F499D25E51CA400B941FF /* MovieSide */,
 				15BE3F7725E2734E00A42A18 /* CategoryRows */,
 				1519D7AA25DE710700692D50 /* Structs */,
 				1519D78B25DE649300692D50 /* AppDelegate.swift */,
 				1519D78D25DE649300692D50 /* SceneDelegate.swift */,
 				1519D79125DE649300692D50 /* Main.storyboard */,
-				1519D7A725DE6E7D00692D50 /* CustomMovieCollectionCell.swift */,
 				1519D79425DE649400692D50 /* Assets.xcassets */,
 				1519D79925DE649400692D50 /* Info.plist */,
-				1519D7A125DE6A9D00692D50 /* MovieListController.swift */,
-				15BE3F8425E2860500A42A18 /* MovieDetail.swift */,
 			);
 			path = Cinemagic;
 			sourceTree = "<group>";
@@ -98,6 +96,16 @@
 				1519D7BB25DE895700692D50 /* Genre.swift */,
 			);
 			path = Structs;
+			sourceTree = "<group>";
+		};
+		153F499D25E51CA400B941FF /* MovieSide */ = {
+			isa = PBXGroup;
+			children = (
+				1519D7A725DE6E7D00692D50 /* CustomMovieCollectionCell.swift */,
+				1519D7A125DE6A9D00692D50 /* MovieListController.swift */,
+				15BE3F8425E2860500A42A18 /* MovieDetail.swift */,
+			);
+			path = MovieSide;
 			sourceTree = "<group>";
 		};
 		15BE3F7725E2734E00A42A18 /* CategoryRows */ = {

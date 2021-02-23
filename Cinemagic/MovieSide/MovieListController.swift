@@ -18,7 +18,7 @@ class MovieListController: UITableViewController {
     var arrRevenueMovies: [Result] = []
     var arrReleaseDateMovies: [Result] = []
     var arrMovies: [[Result]] = [[]]
-    
+    var itemsPerRow:CGFloat = 0
 
     override func viewDidLoad() {
         
@@ -113,9 +113,10 @@ class MovieListController: UITableViewController {
                 
                 topCell.configure(with: categories[indexPath.section],sourceData: arrTopRatedMovies)
                 
+                
                 topCell.MovieCollectionView2.delegate = self
                 topCell.MovieCollectionView2.reloadData()
-                
+               
                 cell = topCell
             }
         case 2:
@@ -178,6 +179,7 @@ class MovieListController: UITableViewController {
         }
     }
     
+    
     func loadImage2(sourceData : [Result] )->[UIImageView]{
         var imgArr : [UIImageView] = []
         
@@ -216,9 +218,14 @@ class MovieListController: UITableViewController {
 
 
 extension MovieListController : UICollectionViewDelegateFlowLayout {
+    
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemsPerRow:CGFloat = 3
+        
+        if UIDevice.current.orientation.isLandscape{
+            self.itemsPerRow = 5
+        }
+        self.itemsPerRow = 3
         let hardCodedPadding:CGFloat = 5
         let itemWidth = (collectionView.bounds.width / itemsPerRow) - hardCodedPadding
         let itemHeight = collectionView.bounds.height - (2 * hardCodedPadding)
